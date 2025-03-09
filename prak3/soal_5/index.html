@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2373003 Revel</title>
+</head>
+
+<body>
+    <div style="width: 275px; height: 300px; margin: 10px auto; border: 1px solid #ccc; padding: 10px;">
+        <h2>NEWS & EVENTS</h2>
+        <iframe id="detail" src="detail.html" width="275px" height="300px" scrolling="auto" frameborder="0" style="display: none;">
+            <p>Your browser does not support iframes.</p>
+        </iframe>
+        <div id="cuplikan_konten">
+            <h3>12.02.2011</h3>
+            <p>Satu per satu para pesaing Manchester United mulai menunjukkan tanda-tanda "menyerah". Kini tinggal Ar...</p>
+            <a href="#detail" id="more-link" style="color: blue; ">more...</a>
+        </div>
+    </div>
+    <style>
+
+        #detail:target {
+            display: block !important;
+        }
+        #detail:target + #cuplikan_konten {
+            display: none;
+        }
+    </style>
+</body>
+
+</html>

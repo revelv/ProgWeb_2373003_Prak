@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373003 Revel</title>
+    <style>
+        table {
+            border: 1px solid black;
+            width: 300px;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 2px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <form id="userForm" action="#" method="post">
+        <table>
+            <td colspan="2"><h3>Form Tambah Data User</h3></td>
+            <tr>
+                <td><label for="name">Name:</label></td>
+                <td>
+                    <input type="text" id="name" name="name" required placeholder="Name is required!!!">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="address">Address:</label></td>
+                <td>
+                    <input type="text" id="address" name="address" required placeholder="Address is required!!!">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td>
+                    <input type="email" id="email" name="email" required placeholder="Harap isi bidang ini.">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="homepage">Home Page:</label></td>
+                <td>
+                    <input type="url" id="homepage" name="homepage">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="birthday">Birthday:</label></td>
+                <td>
+                    <input type="date" id="birthday" name="birthday">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="color">Favorit Color:</label></td>
+                <td>
+                    <input type="color" id="color" name="color">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="ipk">IPK:</label></td>
+                <td>
+                    <input type="number" id="ipk" name="ipk" min="0" max="4" step="0.1" value="0">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="phone">Phone Number:</label></td>
+                <td>
+                    <input type="tel" id="phone" name="phone" pattern="\d{3}-\d{7,10}" placeholder="###-#######">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="submit">Add</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
