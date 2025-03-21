@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373003 Revel</title>
+    <style type="text/css">
+        ul
+        {
+            list-style-type:none;
+            padding:0;
+        }
+        
+        li.satu,li.news
+        {
+            float:left;
+            margin-right: 3px;
+        }
+        
+        a
+        {
+            background-color:white;
+            width:120px;
+            display:block;
+            color:black;
+            padding:3px;
+            text-align:center;
+            text-decoration:none;
+            border-style: dotted;
+            border-color: grey;
+            
+        }
+        
+        a:hover
+        {
+            background-color:black;
+            color: white;
+        }
+        
+        li.news:hover ul{
+            display:block;
+        }
+        
+        li.news ul{
+            display:none;
+        }
+        </style>
+</head>
+<body>
+    <ul>
+        <li class="satu"><a href="#home">Home</a></li>
+        <li class="news"><a href="#news">News</a>
+            <ul>
+                <li><a href="#sports">Sports</a></li>
+                <li><a href="#music">Music</a></li>
+                <li><a href="#movie">Movie</a></li>
+            </ul>
+        </li>
+        <li class="satu"><a href="#contact">Contact</a></li>
+        <li class="satu"><a href="#about">About</a></li>
+    </ul>
+</body>
+</html>
