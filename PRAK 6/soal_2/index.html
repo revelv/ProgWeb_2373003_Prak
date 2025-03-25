@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2373003 Revel</title>
+    <style>
+      table {
+        border: 2px solid grey;
+      }
+      td {
+        border: 1px solid black;
+
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="result"></div>
+
+    <script>
+      do {
+        angka = prompt("A number?");
+        if (angka === null) {
+            window.close();
+            break;
+        }
+      } while (isNaN(angka));
+
+      angka = parseInt(angka);
+      hasil = document.getElementById("result");
+      table = document.createElement("table");
+
+      for (i = 1; i <= angka; i++) {
+        row = document.createElement("tr");
+        cell1 = document.createElement("td");
+        cell2 = document.createElement("td");
+        cell3 = document.createElement("td");
+        cell4 = document.createElement("td");
+        cell5 = document.createElement("td");
+
+        cell1.textContent = i;
+        cell2.textContent = "x";
+        cell3.textContent = angka;
+        cell4.textContent = "=";
+        cell5.textContent = i * angka;
+
+        row.appendChild(cell1);
+        row.appendChild(cell2);
+        row.appendChild(cell3);
+        row.appendChild(cell4);
+        row.appendChild(cell5);
+        table.appendChild(row);
+      }
+      hasil.appendChild(table);
+    </script>
+  </body>
+</html>

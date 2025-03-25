@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2373003 Revel</title>
+    <style>
+      input {
+        margin: 5px;
+        padding: 5px;
+        width: 100px;
+      }
+      button {
+        padding: 5px 10px;
+        margin: 3px;
+        cursor: pointer;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      td {
+        border: 2px solid #000;
+        width: 30px;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="width: 300px;">
+      <label>Angka Pertama :</label>
+
+      <input type="text" id="angka1" />
+    </div>
+    <div style="width: 500px;">
+      <label>Angka Kedua</label>
+      &nbsp;
+      <label>:</label>
+      <input type="text" id="angka2" />
+    </div>
+    <button onclick="hitung()">Count</button>
+    <table>
+      <tr>
+        <td id="no1"></td>
+        <td>+</td>
+        <td id="no2"></td>
+        <td>=</td>
+        <td id="hasilTambah"></td>
+      </tr>
+      <tr>
+        <td id="no3"></td>
+        <td>-</td>
+        <td id="no4"></td>
+        <td>=</td>
+        <td id="hasilKurang"></td>
+      </tr>
+    </table>
+
+    <script>
+      function hitung() {
+        angka1 = parseInt(document.getElementById("angka1").value);
+        angka2 = parseInt(document.getElementById("angka2").value);
+
+        if (isNaN(angka1) && isNaN(angka2)) {
+          alert("angka pertama dan kedua bukan angka.");
+          return ;
+        } else if (isNaN(angka1)) {
+          alert("angka pertama bukan angka.");
+          return ;
+        } else if (isNaN(angka2)) {
+          alert("angka kedua harus angka.");
+          return ;
+        }
+        document.getElementById("no1").innerText = angka1;
+        document.getElementById("no2").innerText = angka2;
+        document.getElementById("hasilTambah").innerText = angka1 + angka2;
+        
+        document.getElementById("no3").innerText = angka1;
+        document.getElementById("no4").innerText = angka2;
+        document.getElementById("hasilKurang").innerText = angka1 - angka2;
+      }
+    </script>
+  </body>
+</html>

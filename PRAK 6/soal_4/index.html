@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2373003 Revel</title>
+    <style>
+      table {
+        width: 310px;
+        border: 2px solid rgb(128, 128, 128);
+        padding: 3px;
+      }
+
+      input {
+        width: 175px;
+      }
+      button {
+        width: 75px;
+        padding: 3px;
+      }
+      select {
+        width: 150px;
+      }
+      button {
+        cursor: pointer;
+        color: blue;
+
+        font-weight: bold;
+      }
+      label {
+        color: blue;
+        font-weight: bold;
+      }
+      #tOutputlabel,
+      #tInputlabel {
+        width: 80px;
+        height: 20px;
+        border: 1px solid black;
+        text-align: right;
+        padding-right: 2px;
+      }
+      #tButton {
+        width: 200px;
+        border: 1px solid black;
+        text-align: center;
+      }
+      #tOption {
+        width: 200px;
+        text-align: center;
+        border: 1px solid black;
+      }
+      #tInput,
+      #tOutput {
+        width: 280px;
+        border: 1px solid black;
+        padding-left: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td id="tInputlabel">
+          <label for="inputNumber">Input :</label>
+        </td>
+        <td id="tInput">
+          <input type="text" id="inputNumber" maxlength="8" />
+        </td>
+      </tr>
+      <tr>
+        <td id="tOutputlabel"><label for="output">Output :</label></td>
+        <td id="tOutput"><input type="text" id="output" disabled /></td>
+      </tr>
+      <tr>
+        <td id="tOption" colspan="2">
+          <select id="conversionType">
+            <option value="decimal-biner">decimal-biner</option>
+            <option value="biner-decimal">biner-decimal</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td id="tButton" colspan="2">
+          <button onclick="convertNumber()">PROSES</button>
+          <button onclick="resetFields()">RESET</button>
+        </td>
+      </tr>
+    </table>
+
+    <script>
+      function convertNumber() {
+        const input = document.getElementById("inputNumber").value;
+        const conversionType = document.getElementById("conversionType").value;
+        let result = "";
+
+        if (conversionType === "decimal-biner") {
+          const decimal = parseInt(input, 10);
+          if (isNaN(decimal) || decimal < 0 || decimal > 255) {
+            alert("hanya bisa diisi dengan angka 0 s/d 255.");
+            return;
+          }
+          let biner = "";
+          let num = decimal;
+          while (num > 0) {
+            biner = (num % 2) + biner;
+            num = Math.floor(num / 2);
+          }
+          result = biner || "0";
+        } else if (conversionType === "biner-decimal") {
+          if (
+            input.split("").some((char) => char !== "0" && char !== "1") ||
+            input.length > 8
+          ) {
+            alert(" hanya bisa diisi dengan angka 0 atau 1 sebanyak 8 digit.");
+            return;
+          }
+          let decimal = 0;
+          for (let i = 0; i < input.length; i++) {
+            decimal += parseInt(input[i]) * Math.pow(2, input.length - 1 - i);
+          }
+          result = decimal;
+        }
+        document.getElementById("output").value = result;
+      }
+
+      function resetFields() {
+        document.getElementById("inputNumber").value = "";
+        document.getElementById("output").value = "";
+      }
+    </script>
+  </body>
+</html>

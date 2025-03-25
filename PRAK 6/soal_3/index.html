@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2373003 Revel</title>
+    <style>
+      table {
+        margin: 50px auto;
+
+        width: 800px;
+        height: 600px;
+      }
+      .blok {
+        background-color: orange;
+        border: 1px solid yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <label>Tinggi Piramida: </label>
+    <input type="text" id="piramida" /> <br />
+    <button onclick="pyramid()">proses</button>
+    <table id="tPiramida"></table>
+
+    <script>
+      function pyramid() {
+        piramida = parseInt(document.getElementById("piramida").value);
+
+        if (isNaN(piramida)) {
+          alert("mohon diisi dengan angka");
+          return;
+        }
+
+        tPiramida = document.getElementById("tPiramida");
+        tPiramida.innerHTML = "";
+
+        for (let i = 0; i < piramida; i++) {
+          row = document.createElement("tr");
+
+          for (let j = 0; j < piramida + i; j++) {
+            cell = document.createElement("td");
+
+            if (j < piramida - i - 1) {
+              cell.className = "kosong";
+            } else {
+              cell.className = "blok";
+            }
+            row.appendChild(cell);
+          }
+          tPiramida.appendChild(row);
+        }
+      }
+    </script>
+  </body>
+</html>
