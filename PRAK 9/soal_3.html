@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>2373003 Revel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      border: 1px solid black;
+    }
+    td {
+      padding: 5px;
+    }
+    input[type="text"] {
+      padding: 5px;
+      width: 200px;
+    }
+    button {
+      padding: 5px 10px;
+    }
+    select {
+      padding: 5px;
+    }
+    #result {
+      border: 1px solid #aaa;
+      padding: 12px;
+      width: 185px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <table>
+    <tr>
+      <td><label for="dataInput">Data </label></td>
+      <td><input type="text" id="dataInput"></td>
+    </tr>
+    <tr>
+      <td><button id="addButton">Add</button></td>
+      <td>
+        <select id="operationSelect" onchange="handleOperation()">
+          <option value="">Pilih Operasi</option>
+          <option value="display">Display</option>
+          <option value="count">Count</option>
+          <option value="sum">Sum</option>
+          <option value="average">Average</option>
+          <option value="max">Max</option>
+          <option value="min">Min</option>
+          <option value="ganjil">Ganjil</option>
+          <option value="genap">Genap</option>
+          <option value="hapus">Hapus</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td><label>Hasil</label></td>
+      <td colspan="3"><span id="result"></span></td>
+    </tr>
+  </table>
+
+  <script>
+    let dataArray = [];
+
+    const dataInput = document.getElementById('dataInput');
+    const addButton = document.getElementById('addButton');
+    const operationSelect = document.getElementById('operationSelect');
+    const resultDiv = document.getElementById('result');
+
+    addButton.addEventListener('click', function () {
+      const inputValue = dataInput.value.trim();
+      if (inputValue === '') {
+        alert('Masukkan angka terlebih dahulu!');
+        return;
+      }
+      if (isNaN(inputValue)) {
+        alert('Input harus berupa angka!');
+        return;
+      }
+      const number = parseFloat(inputValue);
+      dataArray.push(number);
+      dataInput.value = '';
+      dataInput.focus();
+    });
+
+    function handleOperation() {
+      const operation = operationSelect.value;
+      let result = '';
+
+      switch (operation) {
+        case 'display':
+          result = `Isi array: [${dataArray.join(', ')}]`;
+          break;
+        case 'count':
+          result = `Jumlah data: ${dataArray.length}`;
+          break;
+        case 'sum':
+          result = `Total jumlah: ${dataArray.reduce((a, b) => a + b, 0)}`;
+          break;
+        case 'average':
+          result = dataArray.length === 0
+            ? 'Array kosong, tidak bisa menghitung rata-rata'
+            : `Rata-rata: ${(dataArray.reduce((a, b) => a + b, 0) / dataArray.length).toFixed(2)}`;
+          break;
+        case 'max':
+          result = dataArray.length === 0
+            ? 'Array kosong, tidak ada nilai maksimum'
+            : `Nilai maksimum: ${Math.max(...dataArray)}`;
+          break;
+        case 'min':
+          result = dataArray.length === 0
+            ? 'Array kosong, tidak ada nilai minimum'
+            : `Nilai minimum: ${Math.min(...dataArray)}`;
+          break;
+        case 'ganjil':
+          result = `Angka ganjil: [${dataArray.filter(n => n % 2 !== 0).join(', ')}]`;
+          break;
+        case 'genap':
+          result = `Angka genap: [${dataArray.filter(n => n % 2 === 0).join(', ')}]`;
+          break;
+        case 'hapus':
+          dataArray = [];
+          result = 'Array telah dikosongkan';
+          break;
+        default:
+          result = 'Pilih operasi yang tersedia';
+      }
+
+      resultDiv.textContent = result;
+    }
+  </script>
+
+</body>
+</html>

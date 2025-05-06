@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2373003 Revel</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 400px;
+      }
+
+      th,
+      td {
+        border: 1px solid #aaa;
+        padding: 8px 12px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #98a696;
+      }
+
+      .blue {
+        background-color: #adcaff;
+      }
+
+      .orange {
+        background-color: #ffccaa;
+      }
+
+      .highlight,
+      .c3 {
+        background-color: #ccffaa 
+      }
+
+    </style>
+  </head>
+  <body>
+    <table id="programmingTable">
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Programming Language</th>
+          <th>Ratings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="blue">
+          <td>1</td>
+          <td>C</td>
+          <td>18.058%</td>
+        </tr>
+        <tr class="orange">
+          <td>2</td>
+          <td>Java</td>
+          <td>18.051%</td>
+        </tr>
+        <tr class="blue">
+          <td>3</td>
+          <td>C++</td>
+          <td>9.707%</td>
+        </tr>
+        <tr class="orange">
+          <td>4</td>
+          <td>PHP</td>
+          <td>9.662%</td>
+        </tr>
+        <tr class="blue">
+          <td>5</td>
+          <td>(Visual) Basic</td>
+          <td>6.392%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+        function efekhover(tableId) {
+          const rows = document.getElementById(tableId).getElementsByTagName("tr");
+      
+          for (let i = 1; i < rows.length; i++) {
+            rows[i].dataset.original = rows[i].className;
+      
+            rows[i].onmouseover = function () {
+              this.className = "c3";
+            };
+      
+            rows[i].onmouseout = function () {
+              this.className = this.dataset.original;
+            };
+          }
+        }
+      
+        window.onload = function () {
+          efekhover("programmingTable");
+        };
+      </script>
+      
+  </body>
+</html>
