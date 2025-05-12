@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Change Colors</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      div {
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+        float: left;
+        border: 2px solid blue;
+        text-align: center;
+        background-color: white;
+      }
+      .merah {
+        background-color: red !important;
+      }
+      .kuning {
+        background-color: yellow !important;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Change colors</button>
+    <br /><br />
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+      $("div").click(function () {
+        $("div").removeClass("merah");
+        $(this).addClass("merah");
+        $(this).attr("id", "kotakMerah");
+      });
+
+      $("button").click(function () {
+        $("div").each(function (index, domEle) {
+          if ($(domEle).attr("id") === "kotakMerah") {
+            return false;
+          }
+
+          $(domEle).addClass("kuning");
+        });
+      });
+    </script>
+  </body>
+</html>

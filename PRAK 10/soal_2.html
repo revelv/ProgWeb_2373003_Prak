@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2373003 Revel</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .container {
+      width: 300px;
+      border: 1px solid #aaa;
+      padding: 10px;
+    }
+    .input-area {
+      display: flex;
+      margin-bottom: 10px;
+    }
+    button {
+      cursor: pointer;
+    }
+    .highlight {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="input-area">
+      <input type="text" id="nameInput" placeholder=""/>
+      <button id="addBtn">Add</button>
+      <button id="searchBtn">Search</button>
+    </div>
+    <div class="name-container" id="nameContainer">
+      <div class="name-item">John Resig</div>
+      <div class="name-item">George Martin</div>
+      <div class="name-item">Malcom John Sinclair</div>
+      <div class="name-item">J. Ohn</div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('#addBtn').click(function() {
+        const name = $('#nameInput').val().trim();
+        if (name) {
+          $('<div class="name-item"></div>').text(name).appendTo('#nameContainer');
+          $('#nameInput').val('');
+        }
+      });
+
+      $('#searchBtn').click(function() {
+        const searchTerm = $('#nameInput').val().trim();
+        $('.name-item').removeClass('highlight');
+        if (searchTerm) {
+          $(`.name-item:contains(${searchTerm})`).each(function() {
+            $(this).addClass('highlight');
+          });
+        }
+      });
+
+      $('#nameInput').keypress(function(e) {
+        if (e.which === 13) {
+          const activeBtn = $('button:focus');
+          if (activeBtn.length) {
+            activeBtn.click();
+          } else {
+            $('#addBtn').click();
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

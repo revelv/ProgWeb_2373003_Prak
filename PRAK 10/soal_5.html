@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2373003 Revel</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      .container {
+        width: 300px;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+
+      #searchInput {
+        width: 220px;
+        font-size: 14px;
+      }
+
+      .company-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .company-list li {
+        padding: 5px;
+        font-size: 14px;
+      }
+
+      .highlight {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" id="searchInput" placeholder="" />
+      <ul class="company-list" id="companyList">
+        <li>Sun Microsystem</li>
+        <li>Apache Software Foundation</li>
+        <li>Oracle Coorporation</li>
+        <li>International Bussiness Machines</li>
+        <li>Microsoft Coorporation</li>
+        <li>Apple Inc</li>
+        <li>Sap Ag</li>
+        <li>Accenture</li>
+        <li>Computer Sciences Coorporation</li>
+        <li>Google</li>
+        <li>Softbank</li>
+        <li>Yahoo</li>
+      </ul>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#searchInput").on("input", function () {
+          const searchText = $(this).val().toLowerCase();
+
+          $("#companyList li").each(function () {
+            const originalText = $(this).text();
+            const companyText = originalText.toLowerCase();
+
+            if (searchText === "") {
+              $(this).html(originalText);
+            } else if (companyText.includes(searchText)) {
+              $(this).addClass("highlight");
+            } else {
+              $(this).removeClass("highlight");
+              $(this).html(originalText);
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

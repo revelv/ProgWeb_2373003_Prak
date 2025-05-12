@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2373003 Revel</title>
+    <style>
+      .main-menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        background-color: hotpink;
+        width: 380px;
+      }
+
+      .main-menu > li {
+        position: relative;
+        padding: 10px 20px;
+        color: white;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      .main-menu > li:not(:last-child) {
+        border-right: 5px solid white;
+      }
+
+      .main-menu > li:hover {
+        cursor: pointer;
+      }
+
+      .main-menu .sub-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        border: 2px solid #f26ac2;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+
+      .main-menu .sub-menu li {
+        color: black;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu-container">
+      <ol class="main-menu">
+        <li class="item">
+          jQuery
+          <ol class="sub-menu">
+            <li>Download</li>
+            <li>Documentation</li>
+            <li>Blog</li>
+          </ol>
+        </li>
+        <li class="item">
+          Community
+          <ol class="sub-menu">
+            <li>Mailing List</li>
+            <li>Tutorials</li>
+            <li>Demos</li>
+            <li>Plugins</li>
+          </ol>
+        </li>
+        <li class="item">
+          Development
+          <ol class="sub-menu">
+            <li>Source Code</li>
+            <li>Bug Tracking</li>
+            <li>Recent Changes</li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("li.item ol").hide();
+
+        $("li.item").hover(
+          function () {
+            $("li.item ol").stop(true, true).slideUp(200);
+            $(this).find("ol").stop(true, true).slideDown(200);
+          },
+          function () {
+            $(this).find("ol").stop(true, true).slideUp(200);
+          }
+        );
+      });
+    </script>
+  </body>
+</html>
