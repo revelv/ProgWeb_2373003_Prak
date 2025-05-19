@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Mahasiswa Pemrograman Web</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Selamat! berikut adalah Daftar Mahasiswa yang mendapat</h1>
+        <h1>Nilai A Pemrograman Web SI Tahun Ajaran 2023/2024</h1>
+        
+        <div class="filter-section">
+            <form id="filterForm">
+                <label>
+                    <input type="radio" name="kelas" value="all"> All
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="kelas" value="A"> Kelas A
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="kelas" value="B"> Kelas B
+                </label>
+                <br>
+                <button type="button" id="searchBtn">Search</button>
+            </form>
+        </div>
+        
+        <div class="table-container">
+            <table id="mahasiswaTable">
+                <thead>
+                    <tr>
+                        <th>NRP</th>
+                        <th>NAMA</th>
+                        <th>KELAS</th>
+                        <th>NILAI AKHIR</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

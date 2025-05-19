@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2373003 Revel</title>
+    <style>
+      #tombol {
+        width: 80px;
+      }
+      table {
+        width: 650px;
+        border: 1px solid black;
+      }
+      td {
+        border: 1px solid grey;
+        padding: 5px;
+      }
+      a {
+        color: blue;
+        text-decoration: underline;
+      }
+      .title-link {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        padding: 20px;
+      }
+      .course-title {
+        font-size: 14px;
+      }
+      .meta {
+        font-style: italic;
+        font-size: 13px;
+      }
+      .footer {
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="data-table">
+      <tr>
+        <td id="title">Title</td>
+      </tr>
+      <tr>
+        <td id="content">Content</td>
+      </tr>
+      <tr>
+        <td id="generator">Generator</td>
+      </tr>
+    </table>
+    <br />
+    <button type="button" id="tombol">Look</button>
+
+    <script>
+      document.getElementById("tombol").addEventListener("click", function () {
+        fetch("SIJson.txt")
+          .then((response) => response.json())
+          .then((jsonData) => {
+            const table = document.getElementById("data-table");
+            table.innerHTML = "";
+
+            table.innerHTML += `
+            <tr><td class="title-link"><a href="${jsonData.link}" target="_blank">${jsonData.title}</a></td></tr>
+          `;
+
+            jsonData.items.forEach((item) => {
+              table.innerHTML += `
+              <tr><td class="course-title"><a href="${item.link}" target="_blank">${item.title}</a><br />
+                By : ${item.author} / <i>${item.published}</i> <br /> <br />
+                ${item.description}
+                <br /> <br />
+                Universitas : <a href="${item.universitas.m}" target="_blank">Click Here</a>
+                <br />
+                Tag(s) : ${item.tags}
+                <br />
+                </td></tr>
+
+
+            `;
+            });
+
+            table.innerHTML += `
+            <tr><td class="footer">©${jsonData.generator}</td></tr>
+          `;
+          })
+          .catch((error) => {
+            console.error("Error loading JSON file:", error);
+            document.getElementById("content").textContent =
+              "Error loading data. Please make sure SIJson.txt exists.";
+          });
+      });
+    </script>
+  </body>
+</html>
