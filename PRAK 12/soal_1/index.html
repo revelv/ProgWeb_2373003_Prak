@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>2373003 Revel Valerian</title>
+    <style>
+      button {
+        margin: 2px;
+      }
+      table {
+        margin: 10px auto;
+        border: 2px solid #ccc;
+      }
+      .error-message {
+        color: red;
+        font-weight: bold;
+        width: fit-content;
+        margin: 10px auto;
+      }
+      label {
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <form
+      id="profileForm"
+      method="post"
+      action="process.php"
+      onsubmit="return validateForm()"
+    >
+      <table>
+        <tr>
+          <th
+            colspan="2"
+            style="
+              background-color: lightgray;
+              text-align: center;
+              border: 1px solid black;
+            "
+          >
+            <h2>Add profile</h2>
+          </th>
+        </tr>
+        <tr>
+          <th style="text-align: left">Name</th>
+          <td><input type="text" name="name" id="name" /></td>
+        </tr>
+        <tr>
+          <th style="text-align: left">Position</th>
+          <td>
+            <select name="position" id="position">
+              <optgroup label="Programmer">
+                <option value="Senior Programmer" selected>
+                  Senior Programmer
+                </option>
+                <option value="Programmer">Programmer</option>
+                <option value="Junior Programmer">Junior Programmer</option>
+              </optgroup>
+              <optgroup label="System Analyst">
+                <option value="System Analyst">System Analyst</option>
+                <option value="Senior Analyst">Senior Analyst</option>
+                <option value="Junior Analyst">Junior Analyst</option>
+              </optgroup>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th style="text-align: left">Password</th>
+          <td><input type="password" name="password" id="password" /></td>
+        </tr>
+        <tr>
+          <th style="text-align: left">Confirm Password</th>
+          <td><input type="password" name="confirm" id="confirm" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: right">
+            <button type="reset" onclick="resetForm()">Reset</button>
+            <button type="submit" name="save">Save</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <div id="error" class="error-message"></div>
+
+    <script>
+      function resetForm() {
+        setTimeout(function () {
+          document.getElementById("position").value = "Senior Programmer";
+          document.getElementById("error").innerText = "";
+        }, 0);
+      }
+
+      function validateForm() {
+        const name = document.getElementById("name").value.trim();
+        const password = document.getElementById("password").value;
+        const confirm = document.getElementById("confirm").value;
+        let errorMessages = [];
+
+        if (name === "") {
+          errorMessages.push("Input Nama belum di isi!");
+        }
+        if (password === "") {
+          errorMessages.push("Input Password belum di isi!");
+        }
+        if (confirm === "") {
+          errorMessages.push("Input Confirm Password belum di isi!");
+        }
+        if (password !== "" && confirm !== "" && password !== confirm) {
+          errorMessages.push("Password dan Confirm Password belum sama!");
+        }
+
+        if (errorMessages.length > 0) {
+          document.getElementById("error").innerText = errorMessages.join("\n");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+  </body>
+</html>
